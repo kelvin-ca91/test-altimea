@@ -1,0 +1,71 @@
+<header>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="javascript:;">Cambio de divisas</a>
+    </div>
+  </nav>
+</header>
+<div class="container mt-4">
+  <div class="row">
+    <div class="col">
+      <div class="mb-3">
+        <label for="divisaInicial" class="form-label">Divisa Inicial</label>
+        <select name="" class="form-select" id="" disabled>
+          <option
+            *ngFor="let item of listCountries"
+            [value]="item.currencies[0].code"
+          >
+            {{ item.name }}
+          </option>
+        </select>
+      </div>
+    </div>
+    <div class="col-2">
+      <div class="mb-3">
+        <label class="form-label">&nbsp;</label>
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="basic-addon1">
+            {{ divisaInicial }}
+          </span>
+          <input
+            type="number"
+            [(ngModel)]="amount"
+            (ngModelChange)="changeAmount()"
+            class="form-control"
+          />
+        </div>
+        <div>Resultado:</div>
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="basic-addon1">
+            {{ divisaFinal }}
+          </span>
+          <input
+            type="number"
+            readonly
+            [(ngModel)]="resultado"
+            class="form-control"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="mb-3">
+        <label for="divisaFinal" class="form-label">Divisa Final</label>
+        <select
+          name=""
+          class="form-select"
+          [(ngModel)]="divisaFinal"
+          (ngModelChange)="selectDivisaFinal()"
+        >
+          <option value="" selected>--- Seleccione ---</option>
+          <option
+            *ngFor="let item of listCountries"
+            [value]="item.currencies[0].code"
+          >
+            {{ item.name }}
+          </option>
+        </select>
+      </div>
+    </div>
+  </div>
+</div>
